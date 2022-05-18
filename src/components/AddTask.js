@@ -29,6 +29,7 @@ const AddTask = () => {
         .then(result => console.log(result));
 
         // console.log(data);
+        event.target.reset();
     }
 
 
