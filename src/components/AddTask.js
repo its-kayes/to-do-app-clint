@@ -18,15 +18,15 @@ const AddTask = () => {
             email: user?.email
         }
 
-        fetch('http://localhost:5000/tasks', {
+        fetch('https://vast-refuge-77767.herokuapp.com/tasks', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
             },
             body: JSON.stringify(data)
         })
-        .then(res => res.json())
-        .then(result => console.log(result));
+            .then(res => res.json())
+            .then(result => console.log(result));
 
         event.target.reset();
     }
