@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
@@ -10,7 +11,7 @@ const Home = () => {
                
                <button class="btn btn-outline btn-gray">See My To-Do List <i class="mx-2 fa-solid fa-angle-right"></i></button>
 
-               <button class="btn btn-outline btn-gray">Add Task <i class="mx-2 fa-solid fa-angle-right"></i></button>
+               <button class="btn btn-outline btn-gray"><Link to='/addtask'>  Add Task </Link> <i class="mx-2 fa-solid fa-angle-right"></i></button>
            </div>
 
         </div>

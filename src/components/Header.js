@@ -23,6 +23,7 @@ const Header = () => {
                         <li><CustomLink to='/'>Home</CustomLink></li>
 
                         <li><CustomLink to='/todo'>To-do</CustomLink></li>
+                        <li><CustomLink to='/addtask'>Add Task</CustomLink></li>
                         {
                             user
                                 ?

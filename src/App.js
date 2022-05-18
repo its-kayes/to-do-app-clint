@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import RequireAuth from './components/RequireAuth';
 import Todo from './components/Todo';
+import AddTask from './components/AddTask';
 
 function App() {
   return (
@@ -13,8 +14,11 @@ function App() {
       <Header> </Header>
       <Routes>
         <Route path='/' element={<Home></Home>}> </Route>
-        <Route path='/todo' element={<RequireAuth> 
+        <Route path='/todo' element={<RequireAuth>
           <Todo> </Todo>
+        </RequireAuth>}></Route>
+        <Route path='/addtask' element={<RequireAuth>
+          <AddTask> </AddTask>
         </RequireAuth>}></Route>
         <Route path='/login' element={<Login></Login>}> </Route>
         <Route path='/register' element={<Register></Register>}> 4</Route>
