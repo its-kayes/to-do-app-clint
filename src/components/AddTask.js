@@ -28,7 +28,6 @@ const AddTask = () => {
         .then(res => res.json())
         .then(result => console.log(result));
 
-        // console.log(data);
         event.target.reset();
     }
 

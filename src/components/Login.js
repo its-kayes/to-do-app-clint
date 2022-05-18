@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../firebase.init';
 
 const Login = () => {
     let [email, setEmail] = useState();
+    let [user] = useAuthState(auth);
+    let navigate = useNavigate()
 
     const [
         signInWithEmailAndPassword,
-        user,
+        ,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+
 
     let getEmail = event => {
         setEmail(event.target.value);
@@ -21,6 +25,7 @@ const Login = () => {
         let pass = event.target.pass.value;
         signInWithEmailAndPassword(email, pass)
         console.log(email);
+        // navigate('/')
     }
 
 
@@ -35,6 +40,7 @@ const Login = () => {
 
                         <label htmlFor="pass" className='my-4'> Password </label>
                         <input name='pass' type="password" placeholder="Password" className="input input-bordered w-full max-w-xs" />
+                        <p className='text-sky-500 font-semibold my-2'> <Link to='/register'> Create Account </Link> </p>
                         <input type='submit' value='Login' className="mt-2 btn btn-dark w-full max-w-sm" />
                     </form>
                 </div>

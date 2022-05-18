@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 import auth from '../firebase.init';
 
 
@@ -36,7 +37,8 @@ const Register = () => {
 
                         <label htmlFor="pass" className='my-4'> Password </label>
                         <input name='pass' type="password" placeholder="Password" className="input input-bordered w-full max-w-xs" />
-                        <input type='submit' value='Login' className="mt-2 btn btn-dark w-full max-w-sm" />
+                        <p className='text-sky-500 font-semibold my-2'> <Link to='/login'> Login </Link> </p>
+                        <input type='submit' value='Register' className="mt-2 btn btn-dark w-full max-w-sm" />
                     </form>
                 </div>
             </div>

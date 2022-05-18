@@ -9,9 +9,9 @@ const Home = () => {
            </div>
            <div className='flex justify-center item-center my-16'>
                
-               <button class="btn btn-outline btn-gray">See My To-Do List <i class="mx-2 fa-solid fa-angle-right"></i></button>
+               <button class="btn btn-outline btn-gray"> <Link to='/todo'> See My To-Do List </Link> <i class="mx-2 fa-solid fa-angle-right"></i></button>
 
-               <button class="btn btn-outline btn-gray"><Link to='/addtask'>  Add Task </Link> <i class="mx-2 fa-solid fa-angle-right"></i></button>
+               <button class="mx-4 btn btn-outline btn-gray"><Link to='/addtask'>  Add Task </Link> <i class=" px-2 fa-solid fa-plus"></i></button>
            </div>
 
         </div>
