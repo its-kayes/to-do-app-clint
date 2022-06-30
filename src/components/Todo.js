@@ -11,9 +11,19 @@ const Todo = () => {
     let [tasks, setTasks] = useState();
     let email = user?.email;
 
+    // useEffect(() => {
+
+    //     fetch(`http://localhost:5000/tasks/${email}`)
+    //         .then(req => req.json())
+    //         .then(data => {
+    //             console.log(data);
+    //             setTasks(data);
+    //         })
+    // }, []);
+
     useEffect(() => {
 
-        fetch(`http://localhost:5000/tasks/${email}`)
+        fetch("http://localhost:5000/tasks/")
             .then(req => req.json())
             .then(data => {
                 console.log(data);
@@ -50,29 +60,32 @@ const Todo = () => {
 
     return (
         <div>
-            <h1 className='text-center text-4xl mb-16  font-bold'> My Total Task:- {tasks?.length} </h1>
-            <div className='flex justify-around'>
-                {
-                    tasks?.map(task =>
-                        <div>
-                            <div class="card w-96 bg-gray-200 shadow-xl">
-                                <div class={`card-body ${(check === true) ? "line-through" : "no-underline"}`}>
-                                    <h2 class="card-title">{task.name}</h2>
-                                    <p>{task.description}</p>
-                                    <div class="card-actions justify-end">
-                                        <button onClick={() => deleteTask(task._id)} class="btn bg-rose-600">Delete</button>
-                                    </div>
+            <h1 className='text-center text-4xl font-bold'> My Total Task:- {tasks?.length} </h1>
 
+            <div className='h-screen items-center flex justify-center'>
+                <div className=' grid grid-cols-3 gap-10 '>
+                    {
+                        tasks?.map(task =>
+                            <div>
+                                <div class="card w-96 bg-gray-200 shadow-xl">
+                                    <div class={`card-body ${(check === true) ? "line-through" : "no-underline"}`}>
+                                        <h2 class="card-title">{task.name}</h2>
+                                        <p>{task.description}</p>
+                                        <div class="card-actions justify-end">
+                                            <button onClick={() => deleteTask(task._id)} class="btn bg-rose-600">Delete</button>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    )
-                }
-            </div>
-            <div className='flex items-center justify-center my-20'>
+                        )
+                    }
+                </div>
+                {/* <div className='flex items-center justify-center my-20'>
                 <input onChange={handleCheck} type="checkbox" className='w-10 h-10 rounded-lg' /> <p className='px-3 text-xl font-bold'> Complete </p>
+            </div> */}
+                <ToastContainer></ToastContainer>
             </div>
-            <ToastContainer></ToastContainer>
         </div>
     );
 };
