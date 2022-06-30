@@ -14,14 +14,14 @@ function App() {
       <Header> </Header>
       <Routes>
         <Route path='/' element={<Home></Home>}> </Route>
-        <Route path='/todo' element={<RequireAuth>
+        <Route path='/todo' element={
           <Todo> </Todo>
-        </RequireAuth>}></Route>
-        <Route path='/addtask' element={<RequireAuth>
+        }></Route>
+        <Route path='/addtask' element={
           <AddTask> </AddTask>
-        </RequireAuth>}></Route>
-        <Route path='/login' element={<Login></Login>}> </Route>
-        <Route path='/register' element={<Register></Register>}> 4</Route>
+        }></Route>
+        {/* <Route path='/login' element={<Login></Login>}> </Route>
+        <Route path='/register' element={<Register></Register>}> 4</Route> */}
       </Routes>
     </div>
   );

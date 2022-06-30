@@ -18,7 +18,7 @@ const AddTask = () => {
             email: user?.email
         }
 
-        fetch('https://vast-refuge-77767.herokuapp.com/tasks', {
+        fetch('http://localhost:5000/tasks', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

@@ -7,35 +7,38 @@ import CustomLink from './CustomLink';
 
 const Header = () => {
 
-    const [user, loading, error] = useAuthState(auth);
+    // const [user, loading, error] = useAuthState(auth);
 
-    let signout = event => {
-        signOut(auth)
-    }
+    // let signout = event => {
+    //     signOut(auth)
+    // }
 
     return (
-        <div>
-            <div className="navbar bg-gray-200 mb-10">
-                <div className="flex-1">
-                    <Link to='/' className="btn btn-ghost normal-case text-xl">To-do App</Link>
-                </div>
-                <div className="flex-none">
-                    <ul className="menu menu-horizontal p-0">
-                        <li><CustomLink to='/'>Home</CustomLink></li>
-
-                        <li><CustomLink to='/todo'>To-do</CustomLink></li>
-                        <li><CustomLink to='/addtask'>Add Task</CustomLink></li>
-                        {
-                            user
-                                ?
-                                <li><button className='' onClick={signout} >Sign Out</button></li>
-                                :
-                                <li><CustomLink to='/login'>Login</CustomLink></li>
-                        }
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <div class="navbar bg-base-100">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <label tabindex="0" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+      </label>
+      <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+        <li><a>To-Do</a></li>
+        <li><a>Completed Tasks</a></li>
+        <li><a>Calendar</a></li>
+      </ul>
+    </div>
+    <a class="btn btn-ghost normal-case text-xl">TODO APP</a>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal p-0">
+      <li><a>To-Do</a></li>
+      <li><a>Completed Tasks</a></li>
+      <li><a>Calendar</a></li>
+    </ul>
+  </div>
+  <div class="navbar-end">
+    <a class="btn">Get started</a>
+  </div>
+</div>
     );
 };
 

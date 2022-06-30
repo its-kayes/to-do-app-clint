@@ -13,7 +13,7 @@ const Todo = () => {
 
     useEffect(() => {
 
-        fetch(`https://vast-refuge-77767.herokuapp.com/tasks/${email}`)
+        fetch(`http://localhost:5000/tasks/${email}`)
             .then(req => req.json())
             .then(data => {
                 console.log(data);
@@ -25,7 +25,7 @@ const Todo = () => {
     let deleteTask = id => {
         let sureDelete = window.confirm(" Are You Sure to Delete this Products ? ");
         if (sureDelete) {
-            let url = `https://vast-refuge-77767.herokuapp.com/tasks/${id}`;
+            let url = `http://localhost:5000/tasks/${id}`;
             fetch(url, {
                 method: 'DELETE',
             })
