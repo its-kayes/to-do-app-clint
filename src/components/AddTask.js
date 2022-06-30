@@ -13,6 +13,7 @@ const AddTask = () => {
         let data = {
             name: name,
             description: description,
+            role: "do"
         }
 
         fetch('http://localhost:5000/tasks', {

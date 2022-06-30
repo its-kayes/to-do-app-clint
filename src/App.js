@@ -8,6 +8,7 @@ import RequireAuth from './components/RequireAuth';
 import Todo from './components/Todo';
 import AddTask from './components/AddTask';
 import Update from './components/Update';
+import Complete from './components/Complete';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/update/:id' element={
           <Update> </Update>
         }></Route>
+        <Route path='/complete' element={<Complete> </Complete>}> </Route>
         {/* <Route path='/login' element={<Login></Login>}> </Route>
         <Route path='/register' element={<Register></Register>}> 4</Route> */}
       </Routes>

@@ -8,10 +8,10 @@ import { useNavigate } from 'react-router-dom';
 
 const Todo = () => {
     let [check, setCheck] = useState(false);
-    let [user] = useAuthState(auth);
+    // let [user] = useAuthState(auth);
     let [tasks, setTasks] = useState();
     let navigate = useNavigate();
-    let email = user?.email;
+    // let email = user?.email;
 
     // useEffect(() => {
 
@@ -23,9 +23,12 @@ const Todo = () => {
     //         })
     // }, []);
 
+    
+    let role = "do";
+    let url =`http://localhost:5000/todo/${role}`
     useEffect(() => {
 
-        fetch("http://localhost:5000/tasks/")
+        fetch(url)
             .then(req => req.json())
             .then(data => {
                 console.log(data);
@@ -60,6 +63,20 @@ const Todo = () => {
 
     }
 
+    let complete = id => {
+        let url = `http://localhost:5000/complete/${id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+        })
+            .then(res => res.json())
+            .then(data => {
+                alert("Complete Todo ");
+            })
+    }
+
     let update = id => {
         navigate(`/update/${id}`)
     }
@@ -79,6 +96,7 @@ const Todo = () => {
                                         <p>{task.description}</p>
                                         <div class="card-actions justify-between">
                                             <button onClick={() => update(task._id)} className='btn bg-green-600' > Update </button>
+                                            <button onClick={() => complete(task._id)} className='btn bg-green-600' > Complete </button>
                                             <button onClick={() => deleteTask(task._id)} class="btn bg-rose-600">Delete</button>
                                         </div>
 
