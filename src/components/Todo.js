@@ -3,12 +3,14 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 
 const Todo = () => {
     let [check, setCheck] = useState(false);
     let [user] = useAuthState(auth);
     let [tasks, setTasks] = useState();
+    let navigate = useNavigate();
     let email = user?.email;
 
     // useEffect(() => {
@@ -58,6 +60,10 @@ const Todo = () => {
 
     }
 
+    let update = id => {
+        navigate(`/update/${id}`)
+    }
+
     return (
         <div>
             <h1 className='text-center text-4xl font-bold'> My Total Task:- {tasks?.length} </h1>
@@ -71,7 +77,8 @@ const Todo = () => {
                                     <div class={`card-body ${(check === true) ? "line-through" : "no-underline"}`}>
                                         <h2 class="card-title">{task.name}</h2>
                                         <p>{task.description}</p>
-                                        <div class="card-actions justify-end">
+                                        <div class="card-actions justify-between">
+                                            <button onClick={() => update(task._id)} className='btn bg-green-600' > Update </button>
                                             <button onClick={() => deleteTask(task._id)} class="btn bg-rose-600">Delete</button>
                                         </div>
 

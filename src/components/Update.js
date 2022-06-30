@@ -1,11 +1,11 @@
 import React from 'react';
-import auth from '../firebase.init'
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useParams } from 'react-router-dom';
 
+const Update = () => {
 
-const AddTask = () => {
+    let { id } = useParams();
 
-    let taskDetails = event => {
+    let update = event => {
         event.preventDefault();
         let name = event.target.name.value;
         let description = event.target.description.value;
@@ -15,26 +15,27 @@ const AddTask = () => {
             description: description,
         }
 
-        fetch('http://localhost:5000/tasks', {
-            method: 'POST',
+        let url = `http://localhost:5000/todo/${id}`;
+        fetch(url, {
+            method: 'PUT',
             headers: {
-                'content-type': 'application/json',
+                'content-type': 'application/json'
             },
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(result => console.log(result));
-
-        event.target.reset();
+            .then(data => {
+                alert("Update Todo ");
+                event.target.reset();
+            })
     }
-
 
     return (
         <div>
             <div className='flex justify-center'>
                 <div className="card w-96 bg-base-100 shadow-xl">
                     <div className="card-body">
-                        <form onSubmit={taskDetails}>
+                        <form onSubmit={update}>
                             <h2 className="text-2xl font-bold text-center"> Add to Task </h2>
                             <label htmlFor="name" className='mt-4'> Task Name  </label>
                             <input name='name' type="text" placeholder="Task Name" className=" input input-bordered w-full max-w-xs" />
@@ -50,4 +51,4 @@ const AddTask = () => {
     );
 };
 
-export default AddTask;
+export default Update;
